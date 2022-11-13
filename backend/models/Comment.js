@@ -6,12 +6,6 @@ const CommentModel = new Schema({
     username: {type: String, required: true},
     contents: {type: String, required: true},
   
-    
-    // Associate the comment model
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref:'Comment'
-        }]
 },{
     timestamps: true
 })
