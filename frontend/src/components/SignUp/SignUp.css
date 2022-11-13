@@ -1,0 +1,17 @@
+.signUp {
+    /* make the entire signUp page full screen */
+    height: 100vh;
+    width: 100vw;
+    /* add NETFLIX bg img */
+    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/0ef67cc5-0aa7-47cf-87bd-7f595afc7cfb/d0244cef-01de-496e-9a1b-5ef041edc7b9/BH-en-20221107-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+}
+
+.header {
+    padding: 25px 50px;
+    display: flex;
+}
+
+.NetflixLogo {
+    height: 50px;
+
+}
