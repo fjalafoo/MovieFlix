@@ -7,13 +7,21 @@ SCRUM Questions:
 Scrum Meeting #1:
 13-11-22
 
+goal by end of the day: 
+ Signup/Login Authentication — Last step
+
     - Nathaneal
+        Create Routes
 
     - Kawthar
-
+        Connect the project to the MongoDB database
+        
     - Fatema
+        Create a NodeJS/Express /React project
 
     - Sabika
+        Create models
+
 
 --------------------------------------------------------
 
