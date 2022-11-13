@@ -2,12 +2,10 @@ const mongoose = require ('mongoose')
 
 const Schema = mongoose.Schema
 //  Creating our Tweet Schema
-const UserModel = new Schema({
-    firstName: {type: String, required: true},
-    lastName: {type: String, required: true},
+const CommentModel = new Schema({
     username: {type: String, required: true},
-    email: {type: String, required: true},
-    password: {type: String, required: true},
+    contents: {type: String, required: true},
+  
     
     // Associate the comment model
     comments: [{
@@ -18,6 +16,6 @@ const UserModel = new Schema({
     timestamps: true
 })
 // Storing pur Schema as a model
-const User = mongoose.model('User', UserModel)
+const Comment = mongoose.model('Comment', CommentModel)
 // Exporting our Model
-module.exports = User 
+module.exports = Comment
