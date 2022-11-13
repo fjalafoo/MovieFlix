@@ -20,4 +20,7 @@ Movie streaming full stack app -clone to Netflix
   - Kawthar Nasser
   - Sabika Ali
   - Nathanael Johnson
+  
+# Trello Board
+https://trello.com/b/wXoYzFpC/movieflix 
  
