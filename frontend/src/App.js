@@ -10,11 +10,14 @@ import HomePage from './components/HomePage/HomePage';
 
 
 function App() {
+
   const [isAuth, setIsAuth] = useState(false)
   const [user, setUser] = useState({})
 
-  useEffect(() =>{
+  useEffect(() => {
+
     let token = localStorage.getItem("token")
+
     if(token != null){
       let user = jwt_decode(token)
 
@@ -28,6 +31,7 @@ function App() {
       }
     }
   }, [])
+
 
   const registerHandler = (user) => {
     axios.post("http://localhost:5001/users", user)
@@ -73,13 +77,13 @@ function App() {
 
   return (
     <Router>
-      
+      <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} />
     <div className="App">
      <Routes>
+     <Route path='/home' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
-     <Route path='/login' element={<Login />} />
+     <Route path='/login' element={isAuth ? <HomePage/> : <Login login={loginHandler}/>} />
      <Route path='/' element={<SignUp />} />
-     <Route path='/home' element={<HomePage />} />
      </Routes>
     </div>
     </Router>
