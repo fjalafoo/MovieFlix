@@ -47,28 +47,21 @@ function SignUp(props) {
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
 
 
-      {!email ?(
+      {!newUser.email ?(
         <div className='emailInputField'>
         {/* add a hint for the user to enter their email address */}
-        <input type='email' placeholder='Email address' onChange={changeHandler}></input>
+        <input name='email' type='email' placeholder='Email address' onChange={changeHandler}></input>
         <button className='signUpButton' onClick={registerHandler}>Get Started</button>
       </div>
       ): (
         <form className='emailInputField'>
              {/* add a hint for the user to enter their email address */}
-             <input type='password' placeholder='Password' onChange={changeHandler}></input>
+             <input name='password' type='password' placeholder='Password' onChange={changeHandler}></input>
              <button className='signUpButton' onClick={registerHandler}>Start</button>
            </form>
 
       )}
-           
-      
 
-
-
-             
-
-   
 
       </div>
       {/* signup page components end here  */}
