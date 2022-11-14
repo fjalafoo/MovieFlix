@@ -1,7 +1,22 @@
 import React from 'react'
 import './SignUp.css'
+import {useState} from 'react'
 
-function SignUp() {
+
+
+function SignUp(props) {
+  const [newUser, setNewUser] = useState({})
+    const changeHandler = (e) =>{
+        const user = {...newUser }
+        user[e.target.name] = e.target.value
+        console.log(user)
+        setNewUser(user)
+    }
+
+    const registerHandler = () =>{
+        props.register(newUser)
+    }
+
   return (
 
 
@@ -31,11 +46,29 @@ function SignUp() {
       <h2>Watch anywhere. Cancel anytime.</h2>
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
 
-      <div className='emailInputField'>
+
+      {!email ?(
+        <div className='emailInputField'>
         {/* add a hint for the user to enter their email address */}
-        <input type='email' placeholder='Email address'></input>
-        <button className='signUpButton'>Get Started</button>
+        <input type='email' placeholder='Email address' onChange={changeHandler}></input>
+        <button className='signUpButton' onClick={registerHandler}>Get Started</button>
       </div>
+      ): (
+        <form className='emailInputField'>
+             {/* add a hint for the user to enter their email address */}
+             <input type='password' placeholder='Password' onChange={changeHandler}></input>
+             <button className='signUpButton' onClick={registerHandler}>Start</button>
+           </form>
+
+      )}
+           
+      
+
+
+
+             
+
+   
 
       </div>
       {/* signup page components end here  */}
