@@ -1,8 +1,8 @@
 const mongoose = require ('mongoose')
 
 const Schema = mongoose.Schema
-//  Creating our Tweet Schema
-const ListModel = new Schema({
+//  Creating our List Schema
+const MyListModel = new Schema({
     title: {type: String, required: true},
     genre: {type: String, required: true},
     content: {type: Array},
