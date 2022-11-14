@@ -12,7 +12,7 @@
       background-color: var(--main-color);
     }
   
-    .container {
+    .NavBarcontainer {
       padding: 0px 80px;
       display: flex;
       align-items:initial;
