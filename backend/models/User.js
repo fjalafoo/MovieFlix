@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose')
 
 const Schema = mongoose.Schema
-//  Creating our Tweet Schema
+//  Creating our User Schema
 const UserModel = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
