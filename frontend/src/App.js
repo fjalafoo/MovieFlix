@@ -1,11 +1,12 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import SignUp from './components/User/SignUp/SignUp';
 import Login from './components/User/Login/Login';
 
 import jwt_decode from 'jwt-decode'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 
 
@@ -15,6 +16,7 @@ function App() {
   const [user, setUser] = useState({})
 
   useEffect(() => {
+
 
     let token = localStorage.getItem("token")
 
@@ -79,6 +81,8 @@ function App() {
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
      <Route path='/login' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
      <Route path='/' element={<SignUp />} />
+
+
      </Routes>
     </div>
     </Router>
