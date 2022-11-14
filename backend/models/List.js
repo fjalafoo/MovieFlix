@@ -2,7 +2,7 @@ const mongoose = require ('mongoose')
 
 const Schema = mongoose.Schema
 //  Creating our Tweet Schema
-const MyListModel = new Schema({
+const ListModel = new Schema({
     title: {type: String, required: true},
     genre: {type: String, required: true},
     content: {type: Array},
@@ -17,6 +17,6 @@ const MyListModel = new Schema({
     timestamps: true
 })
 // Storing pur Schema as a model
-const MyList = mongoose.model('MyList', MyListModel)
+const List = mongoose.model('List', ListModel)
 // Exporting our Model
-module.exports = MyList
+module.exports = List

@@ -17,9 +17,9 @@ const UserModel = new Schema({
         ref:'Comment'
         }],
 
-    myList: [{
+    list: [{
         type: Schema.Types.ObjectId,
-        ref:'myList'
+        ref:'List'
         }]
 },{
     timestamps: true
