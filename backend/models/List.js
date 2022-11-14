@@ -2,7 +2,7 @@ const mongoose = require ('mongoose')
 
 const Schema = mongoose.Schema
 //  Creating our List Schema
-const MyListModel = new Schema({
+const ListModel = new Schema({
     title: {type: String, required: true},
     genre: {type: String, required: true},
     content: {type: Array},
