@@ -1,5 +1,7 @@
 import NavBar from "../NavBar/NavBar";
 import "./HomePage.css";
+import axios from 'axios'
+
 
 import jwt_decode from 'jwt-decode';
 
@@ -10,6 +12,17 @@ import { useEffect, useState } from 'react';
 
 
 const Home = () => {
+  const grabMovies = async () =>{
+    const response  = await axios.get(`${process.env.TMBD_BASE_URL}/discover/movie`, {
+      params: {
+        API_KEY: process.env.API_KEY
+      }
+    }) 
+    console.log("The response isssssss")
+    console.log('response', response)
+
+  }
+
   const [isAuth, setIsAuth] = useState(false)
 const [user, setUser] = useState({})
 
@@ -29,6 +42,7 @@ useEffect(() => {
       setIsAuth(false)
     }
   }
+  grabMovies()
 }, [])
 
 
