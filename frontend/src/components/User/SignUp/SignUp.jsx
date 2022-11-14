@@ -1,12 +1,14 @@
 import React from 'react'
 import './SignUp.css'
 import {useState} from 'react'
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 
 function SignUp(props) {
   const [newUser, setNewUser] = useState({})
   const [emailSubmitted, setEmailSubmitted] = useState(false)
+  const navigate = useNavigate()
     const changeHandler = (e) =>{
         const user = {...newUser }
         user[e.target.name] = e.target.value
@@ -14,8 +16,12 @@ function SignUp(props) {
         setNewUser(user)
     }
 
-    const registerHandler = () =>{
+    const registerHandler = (e) =>{
+      e.preventDefault()
         props.register(newUser)
+        // navigate('/home)
+        navigate("/home")
+        debugger
     }
     
     const emailSubmit = () => {
@@ -68,8 +74,6 @@ function SignUp(props) {
            </form>
 
       )}
-
-
 
       </div>
       {/* signup page components end here  */}
