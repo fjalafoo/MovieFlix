@@ -1,9 +1,13 @@
-import React from 'react'
+import NavBar from "../NavBar/NavBar";
+import "./HomePage.css";
 
-function HomePage() {
+
+const Home = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div className="home">
+      <NavBar />
+    </div>
+  );
+};
 
-export default HomePage
+export default Home;

@@ -73,11 +73,13 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      
     <div className="App">
      <Routes>
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
      <Route path='/login' element={<Login />} />
+     <Route path='/' element={<SignUp />} />
+     <Route path='/home' element={<HomePage />} />
      </Routes>
     </div>
     </Router>
