@@ -6,6 +6,7 @@ import {useState} from 'react'
 
 function SignUp(props) {
   const [newUser, setNewUser] = useState({})
+  const [emailSubmitted, setEmailSubmitted] = useState(false)
     const changeHandler = (e) =>{
         const user = {...newUser }
         user[e.target.name] = e.target.value
@@ -16,6 +17,11 @@ function SignUp(props) {
     const registerHandler = () =>{
         props.register(newUser)
     }
+    
+    const emailSubmit = () => {
+      setEmailSubmitted(true)
+    }
+
 
   return (
 
@@ -30,7 +36,7 @@ function SignUp(props) {
       {/* header section starts here */}
       <div className='header'>
         {/* NETFLIX logo on the left*/}
-          <img
+          <img alt=""
           className='NetflixLogo' 
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1597px-Netflix_2015_logo.svg.png?20190206123158'>
           </img>
@@ -41,17 +47,18 @@ function SignUp(props) {
 
 
       {/* signup page components start here  */}
-      <div className='container'>
+      <div className='signUpContainer'>
       <h1>Unlimited movies, TV shows, and more.</h1>
       <h2>Watch anywhere. Cancel anytime.</h2>
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
 
 
-      {!newUser.email ?(
+      
+      {!emailSubmitted ? (
         <div className='emailInputField'>
         {/* add a hint for the user to enter their email address */}
         <input name='email' type='email' placeholder='Email address' onChange={changeHandler}></input>
-        <button className='signUpButton' onClick={registerHandler}>Get Started</button>
+        <button className='signUpButton' onClick={emailSubmit}>Get Started</button>
       </div>
       ): (
         <form className='emailInputField'>
@@ -61,6 +68,7 @@ function SignUp(props) {
            </form>
 
       )}
+
 
 
       </div>

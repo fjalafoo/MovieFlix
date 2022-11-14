@@ -1,0 +1,52 @@
+.navbar {
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+  
+}
+.scrolled{
+      background-color: var(--main-color);
+    }
+  
+    .NavBarcontainer {
+      padding: 0px 80px;
+      display: flex;
+      align-items:initial;
+      justify-content: space-between;
+      height: 70px;
+  
+    }
+    .List{
+        justify-content: space-between;
+        padding: 10px;
+        margin-left: 10px;
+    }
+    .items{
+        margin-left: 10px;
+    }
+    .left {
+        display: flex;     
+       ;
+    }
+    .auth{
+        font-size: 15px;
+        text-align: right;
+        position: absolute;
+        right: 0px;
+        width: 300px;
+        padding: 10px;
+    }
+ 
+        img {
+          width: 170px;
+          height: 45px;
+          margin-left: -70px;
+          border-radius: 5px;
+          object-fit: cover;
+          cursor: pointer;
+        }
+  
