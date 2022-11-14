@@ -10,15 +10,10 @@ import { useEffect, useState } from 'react';
 
 
 
-
 const Home = () => {
   const grabMovies = async () =>{
-    const response  = await axios.get(`${process.env.TMBD_BASE_URL}/discover/movie`, {
-      params: {
-        API_KEY: process.env.API_KEY
-      }
+    const response  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/movie/550?api_key=${process.env.REACT_APP_API_KEY}`, {
     }) 
-    console.log("The response isssssss")
     console.log('response', response)
 
   }
@@ -27,7 +22,7 @@ const Home = () => {
 const [user, setUser] = useState({})
 
 useEffect(() => {
-
+  grabMovies()
   let token = localStorage.getItem("token")
 
   if(token != null){
@@ -42,7 +37,6 @@ useEffect(() => {
       setIsAuth(false)
     }
   }
-  grabMovies()
 }, [])
 
 
