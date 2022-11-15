@@ -17,8 +17,8 @@ async function createUser(req,res){
         console.log(hashedPassword)
 
         const newUser = await User.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            // firstName: req.body.firstName,
+            // lastName: req.body.lastName,
             username:req.body.username,
             email:req.body.email,
             password:hashedPassword
