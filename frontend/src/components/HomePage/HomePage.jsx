@@ -17,23 +17,28 @@ const Home = () => {
 
 
 
+  //function that grabs 20 featured movies from API
   const grabMovies = async () =>{
-    //response const returns an array of 20 movies from the movie db api inside a key called results amongst other keys
-    const {response}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/discover/movie`, {
+    //data const returns an array of 20 movies from the movie db api 
+    //this response is accessed from the data object that has an object called results that contains objects of all 20 movies
+    const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/discover/movie`, {
       params: {
         api_key: process.env.REACT_APP_API_KEY
       }
     }) 
-    // console.log('response', response)
+    //console log for debugging
+    console.log('results', results)
     //set the empty featured movies array to the results grabbed from API
-    setMovies(response)
+    setMovies(results)
 
   }
 
   const [isAuth, setIsAuth] = useState(false)
 const [user, setUser] = useState({})
 
+//runs whenever the homepage is loaded
 useEffect(() => {
+  //call grabmovies method
   grabMovies()
   let token = localStorage.getItem("token")
 
@@ -59,10 +64,15 @@ const onLogoutHandler = (e) =>{
   setUser(null)
 }
 
-
+//function that displays movies
 const renderMovies = () =>{
-  movies.map(movie =>(
-    <MovieCard/>
+  //mapping the movies on to our empty movies array to populate it
+  return movies.map(movie =>(
+    //display movie card page as element here
+    <MovieCard
+    key={movie.id}
+    movie={movie}
+    />
   ))
 }
   return (
