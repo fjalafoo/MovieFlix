@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 function SignUp(props) {
   const [newUser, setNewUser] = useState({})
   const [emailSubmitted, setEmailSubmitted] = useState(false)
+  const [usernameSubmitted, setUsernameSubmitted] = useState(false)
   const navigate = useNavigate()
     const changeHandler = (e) =>{
         const user = {...newUser }
@@ -24,8 +25,14 @@ function SignUp(props) {
         debugger
     }
     
-    const emailSubmit = () => {
+    const emailSubmit = (e) => {
+      e.preventDefault()
       setEmailSubmitted(true)
+    }
+
+    const usernameSubmit = (e) => {
+      e.preventDefault()
+      setUsernameSubmitted(true)
     }
 
 
@@ -61,20 +68,29 @@ function SignUp(props) {
 
       
       {!emailSubmitted ? (
-        <div className='emailInputField'>
+        <div className='inputField'>
         {/* add a hint for the user to enter their email address */}
         <input name='email' type='email' placeholder='Email address' onChange={changeHandler}></input>
         <button className='signUpButton' onClick={emailSubmit}>Get Started</button>
       </div>
-      ): (
-        <form className='emailInputField'>
-             {/* add a hint for the user to enter their email address */}
-             <input name='password' type='password' placeholder='Password' onChange={changeHandler}></input>
-             <button className='signUpButton' onClick={registerHandler}>Start</button>
-           </form>
-
-      )}
-
+      ): <>
+        {!usernameSubmitted ? (
+           <form className='inputField'>
+            {/* add a hint for the user to enter their username */}
+            <input name='username' type='text' placeholder='Username' onChange={changeHandler}></input>
+            <button className='signUpButton' onClick={usernameSubmit}>Next</button>
+          </form>
+        ): (
+        
+          <form className='inputField'>
+          {/* add a hint for the user to enter their email address */}
+          <input name='password' type='password' placeholder='Password' onChange={changeHandler}></input>
+          <button className='signUpButton' onClick={registerHandler}>Start</button>
+        </form>
+        )
+      } </>
+    }
+      
       </div>
       {/* signup page components end here  */}
 
