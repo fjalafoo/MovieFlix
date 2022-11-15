@@ -19,9 +19,9 @@ async function createUser(req,res){
         const newUser = await User.create({
             // firstName: req.body.firstName,
             // lastName: req.body.lastName,
-            username:req.body.username,
-            email:req.body.email,
-            password:hashedPassword
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword
         })
         res.json(newUser)
     } 
@@ -56,7 +56,7 @@ const auth_signin_post = async (req,res)=>{
         const payload={
             user: {
                 id:user._id,
-                name: user.name
+                // name: user.name
             }
         }
         jwt.sign(
@@ -71,8 +71,7 @@ const auth_signin_post = async (req,res)=>{
 
     } catch(error){
         console.log(error)
-        res.json({message: "You are not loggedin! Try again later. "}).
-        status(400);
+        res.json({message: "You are not loggedin! Try again later. "}).status(400);
     }
 }
 
