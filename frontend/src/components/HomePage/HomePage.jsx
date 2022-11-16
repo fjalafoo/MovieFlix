@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 
 
 
+
 const Home = () => {
   //have an array that stores featured movies, for now this array is empty
   const [movies, setMovies] = useState([])
@@ -159,14 +160,35 @@ const findMovieBySearch = (e)=> {
         <div className="featuredTrailer" style={{backgroundImage: `url(${img_path}${trailerMovie.backdrop_path})`}}>
         <h2 className="trailerMovieTitle">{trailerMovie.title}</h2>
         <p className="trailerMovieOverview">{trailerMovie.overview ? <small>{trailerMovie.overview}</small> : null}</p>
+        <button className="PlayBtn">Play</button>
+        <button className="InfoBtn">Info</button>
         </div>
 
 
 
         {/* call a function that display movies  */}
         {/* but displays the search result if searchResults array is populated and has length */}
-        {searchResults.length ? displaySearchedMovies() : displayFeaturedMovies() }
-                            
+        <h2 className="MovieTileHeading">Popular on Netflix</h2>
+        <div className="MovieTile">{searchResults.length ? displaySearchedMovies() : displayFeaturedMovies() }</div>
+        <br />  
+        <h2 className="MovieTileHeading">Trending now</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>  
+        <br />  
+         <h2 className="MovieTileHeading">New Releases</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+
+        <br />  
+         <h2 className="MovieTileHeading">Comedies</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <br />  
+         <h2 className="MovieTileHeading">Action</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <br />  
+         <h2 className="MovieTileHeading">Horror</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+
+
+
       </div>
     </div>
   );

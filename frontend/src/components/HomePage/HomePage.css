@@ -30,3 +30,26 @@
     width:50%;
     text-align: justify;
 }
+
+.PlayBtn {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 22px;
+    padding: 10px;
+    margin-right: 10px;
+    width:6%;
+    float:left;
+    margin-left: 190px;
+    margin-top: 20px;
+   
+}
+.InfoBtn {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 22px;
+    padding: 10px;
+    margin-left: 10px;
+    width:6%;
+    float:left;
+    margin-top: 20px;
+}

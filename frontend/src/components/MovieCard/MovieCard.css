@@ -1,4 +1,4 @@
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 0px;
    
         display: none;
@@ -24,4 +24,43 @@
   border-radius: 5px;
   margin-left: 6px;
 
+} */
+
+.MovieTile {
+    max-height: 220px;
+   
+    border:1px solid #0b0b0b;
+    display:flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: 10px;
+    
+}
+
+.MovieTile ::-webkit-scrollbar{
+    width:0;
+}
+
+.MovieTile .poster {
+    min-width: 260px;
+    height:190px;
+    line-height: 110px;
+    text-align: center;
+    background-color:solid #0b0b0b;
+    margin:26px ;
+
+    
+}
+
+.posterImage.resize {
+   object-fit: contain;
+    
+    
+}
+
+.MovieTileHeading {
+    color:white;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 2%;
 }
