@@ -17,6 +17,10 @@ const Home = () => {
   // have a string that stores the searched movie, for now that string is empty
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
+  // have an object that stores the selected movie to play its trailer, for now that object is empty
+  const [trailerMovie, setTrailerMovie] = useState({})
+  const img_path = "https://image.tmdb.org/t/p/w1280"
+
 
 
 
@@ -33,6 +37,8 @@ const Home = () => {
     console.log('results', results)
     //set the empty featured movies array to the results grabbed from API
     setMovies(results)
+    //set the displayed trailer to show the first movie from the featured movies
+    setTrailerMovie(results[0])
 
   }
 
@@ -128,11 +134,11 @@ const findMovieBySearch = (e)=> {
       <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} />
       <div className="featuredMoviesContainer">
         {/* search movie functionality */}
-        <h1>/</h1>
-        <h1>/</h1>
-        <h1>/</h1>
-        <h1>/</h1>
-        <h1>/</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
+        <h1>.</h1>
         <form onSubmit={findMovieBySearch}>
           < input type='text' onChange={(e) => setSearch(e.target.value)}></input>
           <button type='submit'>Search</button>
@@ -140,14 +146,16 @@ const findMovieBySearch = (e)=> {
         {search}
 
 
-
-
+        <div className="featuredTrailer" style={{backgroundImage: `url(${img_path}${trailerMovie.backdrop_path})`}}>
+        <h2>{trailerMovie.title}</h2>
+        {trailerMovie.overview ? <small>{trailerMovie.overview}</small> : null}
+        </div>
 
 
 
         {/* call a function that display movies  */}
+        {/* but displays the search result if searchResults array is populated and has length */}
         {searchResults.length ? renderSearch() : renderMovies() }
-        {/* call a function that display the searched movies  */}
                             
       </div>
     </div>
