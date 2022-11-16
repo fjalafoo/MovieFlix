@@ -1,0 +1,27 @@
+::-webkit-scrollbar {
+    width: 0px;
+   
+        display: none;
+      
+  }
+
+.MovieTile {
+   -webkit-overflow-scrolling: touch;
+   display:inline-flex;
+   flex-wrap:no-wrap;
+   height:240px;
+  overflow-x: scroll;
+   margin-right: 12px;
+
+   
+  
+}
+
+.poster {
+    flex-shrink: 0;
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+  margin-left: 6px;
+
+}
