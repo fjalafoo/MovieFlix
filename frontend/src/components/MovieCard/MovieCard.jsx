@@ -12,6 +12,8 @@ function MovieCard({movie}) {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
+
+  
   return (
     
       <div className="poster" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> 
@@ -23,6 +25,7 @@ function MovieCard({movie}) {
         
 
          <div className="itemInfoTop">
+          <button className='addBtn'>+</button>
               <span>1 hour 14 mins</span>
               <span className="limit">+16</span>
               <span>1999</span>
