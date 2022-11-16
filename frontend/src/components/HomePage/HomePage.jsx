@@ -62,8 +62,9 @@ const Home = () => {
   
     }
 
-  const [isAuth, setIsAuth] = useState(false)
-  const [user, setUser] = useState({})
+    //REMOVED AUTH
+  // const [isAuth, setIsAuth] = useState(false)
+  // const [user, setUser] = useState({})
 
 //runs whenever the homepage is loaded
 useEffect(() => {
@@ -71,44 +72,52 @@ useEffect(() => {
   grabMovies()
     //call searchMovie method, pass the movie to be searched
   searchMovie(search)
-  let token = localStorage.getItem("token")
 
-  if(token != null){
-    let user = jwt_decode(token)
 
-    if(user){
-      setIsAuth(true)
-      setUser(user)
-    }
-    else if(!user){
-      localStorage.removeItem("token")
-      setIsAuth(false)
-    }
-  }
+  //REMOVED AUTH
+  // let token = localStorage.getItem("token")
+  // if(token != null){
+  //   let user = jwt_decode(token)
+
+  //   if(user){
+  //     setIsAuth(true)
+  //     setUser(user)
+  //   }
+  //   else if(!user){
+  //     localStorage.removeItem("token")
+  //     setIsAuth(false)
+  //   }
+  // }
+
+
+
 }, [])
 
-
-const onLogoutHandler = (e) =>{
-  e.preventDefault()
-  localStorage.removeItem("token")
-  setIsAuth(false)
-  setUser(null)
-}
+//REMOVED AUTH
+// const onLogoutHandler = (e) =>{
+//   e.preventDefault()
+//   console.log("saad")
+//   localStorage.removeItem("token")
+//   setIsAuth(false)
+//   setUser(null)
+// }
 
 //function that displays movies
-const renderMovies = () =>{
+const displayFeaturedMovies = () =>{
   //mapping the movies on to our empty movies array to populate it
   return movies.map(movie =>(
     //display movie card page as element here
     <MovieCard
     key={movie.id}
     movie={movie}
+    //to play the trailer of the rendered movie
+    trailerMovie={setTrailerMovie}
     />
   ))
 }
 
 // function that displays searched items
-const renderSearch = () =>{
+const displaySearchedMovies = () =>{
   //mapping the searched movie on to our empty string
   return searchResults.map(s =>(
     //display movie card page as element here
@@ -129,9 +138,10 @@ const findMovieBySearch = (e)=> {
 
 }
 
+
   return (
     <div className="home">
-      <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} />
+      {/* <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} /> */}
       <div className="featuredMoviesContainer">
         {/* search movie functionality */}
         <h1>.</h1>
@@ -155,7 +165,7 @@ const findMovieBySearch = (e)=> {
 
         {/* call a function that display movies  */}
         {/* but displays the search result if searchResults array is populated and has length */}
-        {searchResults.length ? renderSearch() : renderMovies() }
+        {searchResults.length ? displaySearchedMovies() : displayFeaturedMovies() }
                             
       </div>
     </div>
