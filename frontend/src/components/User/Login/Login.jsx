@@ -1,10 +1,27 @@
 import React from 'react'
 import './Login.css'
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 
 
+function Login(props) {
 
-function Login() {
+  const [newUser, setNewUser] = useState({})
+
+  const changeHandler = (e) =>{
+      const user = {...newUser }
+      user[e.target.name] = e.target.value
+      console.log(user)
+      setNewUser(user)
+  }
+
+  const loginHandler = (e) =>{
+      e.preventDefault()
+      props.login(newUser)
+  }
+
+
     return (
       //div of the entire Login page
       <div className='signIn'>
@@ -24,13 +41,13 @@ function Login() {
      {/* Login page components start here  */}
         <div className="loginContainer">
             <h1>Sign In</h1>
-            <form className='loginForm'>
-            <input type="email" placeholder="Email or phone number" />
-            <input type="password" placeholder="Password" />
+            <form onSubmit={loginHandler} className='loginForm'>
+            <input name='email' type="email" value={newUser.email} onChange={changeHandler} placeholder="Email or phone number" />
+            <input name='password' type="password" value={newUser.password} onChange={changeHandler} placeholder="Password" />
+            <button type='submit' className="loginButton">Sign In</button>
             </form>
-            <button className="loginButton">Sign In</button>
             <span>
-              New to Netflix? <b>Sign up now.</b>
+              New to Netflix? <b><Link to='/signup'>Sign up now.</Link></b>
             </span>
             <small>
               This page is protected by Google reCAPTCHA to ensure you're not a
