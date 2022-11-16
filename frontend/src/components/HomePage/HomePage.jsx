@@ -14,6 +14,9 @@ import { useEffect, useState } from 'react';
 const Home = () => {
   //have an array that stores featured movies, for now this array is empty
   const [movies, setMovies] = useState([])
+  // have a string that stores the searched movie, for now that string is empty
+  const [search, setSearch] = useState("")
+  const [searchResults, setSearchResults] = useState([])
 
 
 
@@ -33,13 +36,35 @@ const Home = () => {
 
   }
 
+    //function that search for a movie
+    const searchMovie = async (search) =>{
+      //data const returns a string of the searched for movie
+      //this response is accessed from the data object that has an object called results that contains an object of the searched for movie
+     debugger
+      const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/search/movie`, {
+        params: {
+          api_key: process.env.REACT_APP_API_KEY,
+          query: search
+          
+        }
+      }) 
+      //console log for debugging
+      console.log('results', results)
+      debugger
+      //set the empty search movie string to the result grabbed from API
+      setSearchResults(results)
+  
+    }
+
   const [isAuth, setIsAuth] = useState(false)
-const [user, setUser] = useState({})
+  const [user, setUser] = useState({})
 
 //runs whenever the homepage is loaded
 useEffect(() => {
   //call grabmovies method
   grabMovies()
+    //call searchMovie method, pass the movie to be searched
+  searchMovie(search)
   let token = localStorage.getItem("token")
 
   if(token != null){
@@ -75,12 +100,55 @@ const renderMovies = () =>{
     />
   ))
 }
+
+// function that displays searched items
+const renderSearch = () =>{
+  //mapping the searched movie on to our empty string
+  return searchResults.map(s =>(
+    //display movie card page as element here
+    <MovieCard
+    key={s.id}
+    movie={s}
+    />
+  ))
+}
+
+
+//function to search movies
+const findMovieBySearch = (e)=> {
+  //prevent refreshing
+  e.preventDefault()
+  debugger
+  searchMovie(search)
+
+}
+
   return (
     <div className="home">
       <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} />
       <div className="featuredMoviesContainer">
+        {/* search movie functionality */}
+        <h1>/</h1>
+        <h1>/</h1>
+        <h1>/</h1>
+        <h1>/</h1>
+        <h1>/</h1>
+        <form onSubmit={findMovieBySearch}>
+          < input type='text' onChange={(e) => setSearch(e.target.value)}></input>
+          <button type='submit'>Search</button>
+        </form>
+        {search}
+
+
+
+
+
+
+
         {/* call a function that display movies  */}
-        {renderMovies()}
+        {searchResults.length ? renderSearch() : renderMovies() }
+        {/* call a function that display the searched movies  */}
+                            
       </div>
     </div>
   );

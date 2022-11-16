@@ -87,6 +87,7 @@ function App() {
      <Route path='/home' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
      <Route path='/login' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
+
      <Route path='/' element={<SignUp register={registerHandler} />} />
 
 
