@@ -157,8 +157,8 @@ const findMovieBySearch = (e)=> {
 
 
         <div className="featuredTrailer" style={{backgroundImage: `url(${img_path}${trailerMovie.backdrop_path})`}}>
-        <h2>{trailerMovie.title}</h2>
-        {trailerMovie.overview ? <small>{trailerMovie.overview}</small> : null}
+        <h2 className="trailerMovieTitle">{trailerMovie.title}</h2>
+        <p className="trailerMovieOverview">{trailerMovie.overview ? <small>{trailerMovie.overview}</small> : null}</p>
         </div>
 
 

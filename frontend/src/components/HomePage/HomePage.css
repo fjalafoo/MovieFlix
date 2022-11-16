@@ -12,3 +12,21 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.trailerMovieTitle{
+    color:white;
+    padding-top: 22%;
+    padding-left: 5%;
+    font-size: 40px;
+    width:50%;
+    
+}
+
+.trailerMovieOverview {
+    color:white;
+    /* padding-top: 25%; */
+    padding-left: 10%;
+    font-size: 18px;
+    width:50%;
+    text-align: justify;
+}
