@@ -80,24 +80,17 @@ function App() {
 
 
   return (
-    <Router>
-      <Navbar onLogoutHandler = {onLogoutHandler} setIsAuth={setIsAuth} isAuth={isAuth} user={user} />
     <div className="App">
+      <Router>
+    <Navbar onLogoutHandler = {onLogoutHandler} setIsAuth={setIsAuth} isAuth={isAuth} user={user} />
      <Routes>
      <Route path='/home' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
      <Route path='/login' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
-
      <Route path='/' element={<SignUp register={registerHandler} />} />
-
-
-
      </Routes>
-    </div>
     </Router>
-
-    
-    
+    </div>
   );
 }
 

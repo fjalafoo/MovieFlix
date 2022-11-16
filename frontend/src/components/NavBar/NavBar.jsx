@@ -11,6 +11,10 @@ const Navbar = (props) => {
     return () => (window.onscroll = null);
   };
 
+  // const signOutFun = () => {
+
+  // }
+
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="NavBarcontainer">
