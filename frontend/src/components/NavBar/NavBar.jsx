@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./NavBar.css";
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   window.onscroll = () => {
@@ -29,7 +29,11 @@ const Navbar = () => {
           </div>
 
           <div className="auth">
-      <a><Link to="/login">Sign out</Link></a>
+      <a onClick={() => {
+        props.setIsAuth(false)
+        props.onLogoutHandler()
+      }
+      }><Link to="/login">Sign out</Link></a>
           </div>
 
         </div>
