@@ -62,9 +62,6 @@ const Home = () => {
   
     }
 
-    //REMOVED AUTH
-  // const [isAuth, setIsAuth] = useState(false)
-  // const [user, setUser] = useState({})
 
 //runs whenever the homepage is loaded
 useEffect(() => {
@@ -74,33 +71,7 @@ useEffect(() => {
   searchMovie(search)
 
 
-  //REMOVED AUTH
-  // let token = localStorage.getItem("token")
-  // if(token != null){
-  //   let user = jwt_decode(token)
-
-  //   if(user){
-  //     setIsAuth(true)
-  //     setUser(user)
-  //   }
-  //   else if(!user){
-  //     localStorage.removeItem("token")
-  //     setIsAuth(false)
-  //   }
-  // }
-
-
-
 }, [])
-
-//REMOVED AUTH
-// const onLogoutHandler = (e) =>{
-//   e.preventDefault()
-//   console.log("saad")
-//   localStorage.removeItem("token")
-//   setIsAuth(false)
-//   setUser(null)
-// }
 
 //function that displays movies
 const displayFeaturedMovies = () =>{
@@ -141,7 +112,6 @@ const findMovieBySearch = (e)=> {
 
   return (
     <div className="home">
-      {/* <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} /> */}
       <div className="featuredMoviesContainer">
         {/* search movie functionality */}
         <h1>.</h1>
