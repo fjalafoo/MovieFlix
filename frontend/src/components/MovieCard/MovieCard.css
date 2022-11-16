@@ -64,3 +64,48 @@
     font-size: 20px;
     margin-left: 2%;
 }
+
+.posterImage:hover {
+    width: 325px;
+    height: 300px;
+    position: absolute;
+    top: -50px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    border-radius: 5px;
+
+    
+}
+    
+
+.posterImage.itemInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 1px;
+  }
+     
+  .posterImage.itemInfoTop {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+        font-size: 12px;
+        font-weight: 200;
+        color: gray;
+      }
+      .posterImage.limit {
+          border: 1px solid gray;
+          padding: 1px 3px;
+          margin: 0 5px;
+        }
+      
+
+        .posterImage.desc {
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+
+      .posterImage.genre {
+        font-size: 14px;
+        color: lightgray;
+      }
+   

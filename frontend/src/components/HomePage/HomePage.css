@@ -53,3 +53,21 @@
     float:left;
     margin-top: 20px;
 }
+
+.searchBtn {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 15px;
+    padding: 10px;
+    width:6%;
+    margin-left: 20px;
+}
+
+.searchInput {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 14px;
+    padding: 10px;
+ width:20%;
+    margin-left: 900px;
+}

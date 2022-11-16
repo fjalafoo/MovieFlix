@@ -145,14 +145,11 @@ const findMovieBySearch = (e)=> {
       {/* <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} /> */}
       <div className="featuredMoviesContainer">
         {/* search movie functionality */}
-        <h1>.</h1>
-        <h1>.</h1>
-        <h1>.</h1>
-        <h1>.</h1>
-        <h1>.</h1>
+       <br /><br /> <br />  <br />  <br />
+     
         <form onSubmit={findMovieBySearch}>
-          < input type='text' onChange={(e) => setSearch(e.target.value)}></input>
-          <button type='submit'>Search</button>
+          < input className="searchInput" type='text' onChange={(e) => setSearch(e.target.value)}></input>
+          <button className="searchBtn" type='submit'>Search</button>
         </form>
         {search}
 
@@ -186,7 +183,6 @@ const findMovieBySearch = (e)=> {
         <br />  
          <h2 className="MovieTileHeading">Horror</h2>
         <div className="MovieTile">{displayFeaturedMovies()}</div>   
-
 
 
       </div>
