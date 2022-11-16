@@ -46,7 +46,7 @@ function App() {
   }
   
   const loginHandler = (cred) =>{
-    axios.post("http://localhost:5001/auth/signin", cred)
+    axios.post("http://localhost:5001/auth/login", cred)
     .then(res =>{
       console.log(res.data.token)
 
