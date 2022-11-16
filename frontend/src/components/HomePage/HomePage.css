@@ -1,6 +1,6 @@
-*{
+/* *{
     color: white;
-}
+} */
 .home{
     background-color: var(--main-color);
     overflow: hidden;
@@ -8,5 +8,7 @@
 }
 
 .featuredTrailer {
-    height: 600px;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
 }

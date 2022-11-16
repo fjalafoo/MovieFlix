@@ -15,6 +15,12 @@ const Navbar = (props) => {
 
   // }
 
+  const onLogoutHandler = (e) => {
+    e.preventDefault()
+    console.log("out")
+    props.onLogoutHandler(e)
+  }
+
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="NavBarcontainer">
@@ -34,11 +40,8 @@ const Navbar = (props) => {
           </div>
 
           <div className="auth">
-      <a onClick={() => {
-        props.setIsAuth(false)
-        props.onLogoutHandler()
-      }
-      }><Link to="/login">Sign out</Link></a>
+     
+      <Link to="/logout" onClick={onLogoutHandler}>Sign out</Link>
           </div>
 
         </div>

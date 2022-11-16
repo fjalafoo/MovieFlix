@@ -46,7 +46,8 @@ function App() {
   }
 
   const onLogoutHandler = (e) =>{
-    e.preventDefault()
+    console.log("logout")
+    // e.preventDefault()
     localStorage.removeItem("token")
     setIsAuth(false)
     setUser(null)
@@ -75,7 +76,7 @@ function App() {
   }
 
 
-  
+  console.log(isAuth)
 
 
 
@@ -87,7 +88,7 @@ function App() {
      <Route path='/home' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
      <Route path='/login' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
-     <Route path='/' element={<SignUp register={registerHandler} />} />
+     <Route path='/' element={<SignUp register={(e) => registerHandler(e)} />} />
      </Routes>
     </Router>
     </div>
