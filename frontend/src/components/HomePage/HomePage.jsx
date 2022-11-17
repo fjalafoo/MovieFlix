@@ -8,6 +8,7 @@ import YouTube from "react-youtube";
 import jwt_decode from 'jwt-decode';
 
 import { useEffect, useState } from 'react';
+import movieTrailer from "movie-trailer";
 
 
 
@@ -24,6 +25,25 @@ const Home = (props) => {
   const img_path = "https://image.tmdb.org/t/p/w1280"
    //have an array that stores popular on netflix movies, for now this array is empty
    const [popularOnNetflixMovies, setPopularOnNetflixMovies] = useState([])
+  //have an array that stores comedy movies, for now this array is empty
+  const [comedyMovies, setComedyMovies] = useState([])
+  //have an array that stores romance movies, for now this array is empty
+  const [romanceMovies, setRomanceMovies] = useState([])
+  //have an array that stores action movies, for now this array is empty
+  const [actionMovies, setActionMovies] = useState([])
+  //have an array that stores horror movies, for now this array is empty
+  const [horrorMovies, setHorrorMovies] = useState([])
+  //options for video
+  const opts = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1
+    }
+  }
+  //  //have a string that stores the trailer url link, for now this string is empty
+  const [trailerUrl, setTrailerUrl] = useState("")
+
 
 
 
@@ -47,12 +67,12 @@ const Home = (props) => {
   }
 
 
-    //function that popular on Netfix movies from API
+    //function that grabs popular on Netfix movies from API
     const grabPopularOnNetflixMovies = async () =>{
       //data const returns an array of popular on netflix movies from the movie db api 
       //this response is accessed from the data object that has an object called results that contains objects of all popular movies
-      const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/trending/all/week`, {
-        params: { 
+      const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/trending/all/day`, {
+        params: {
           api_key: process.env.REACT_APP_API_KEY,
           language: 'en-Us'
         }
@@ -62,6 +82,77 @@ const Home = (props) => {
       //set the empty popular on netflix array to the results grabbed from API
       setPopularOnNetflixMovies(results)  
     }
+
+
+      //function that grabs comedy movies from API
+      const grabComedyMovies = async () =>{
+        //data const returns an array of comedy movies from the movie db api 
+        //this response is accessed from the data object that has an object called results that contains objects of all comedy movies
+        const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/discover/movie`, {
+          params: {
+            api_key: process.env.REACT_APP_API_KEY,
+            with_genres: '35',
+            language: 'en-Us'
+          }
+        }) 
+        //console log for debugging
+        console.log('results', results)
+        //set the empty popular on netflix array to the results grabbed from API
+        setComedyMovies(results)  
+      }
+
+
+        //function that grabs romance movies from API
+        const grabRomanceMovies = async () =>{
+          //data const returns an array of romance movies from the movie db api 
+          //this response is accessed from the data object that has an object called results that contains objects of all romance movies
+          const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/discover/movie`, {
+            params: {
+              api_key: process.env.REACT_APP_API_KEY,
+              with_genres: '10749',
+              language: 'en-Us'
+            }
+          }) 
+          //console log for debugging
+          console.log('results', results)
+          //set the empty popular on netflix array to the results grabbed from API
+          setRomanceMovies(results)  
+        }
+
+        //function that grabs action movies from API
+        const grabActionMovies = async () =>{
+          //data const returns an array of action movies from the movie db api 
+          //this response is accessed from the data object that has an object called results that contains objects of all action movies
+          const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/discover/movie`, {
+            params: {
+              api_key: process.env.REACT_APP_API_KEY,
+              with_genres: '28',
+              language: 'en-Us'
+            }
+          }) 
+          //console log for debugging
+          console.log('results', results)
+          //set the empty popular on netflix array to the results grabbed from API
+          setActionMovies(results)  
+        }
+
+        //function that grabs horror movies from API
+        const grabHorrorMovies = async () =>{
+          //data const returns an array of horror movies from the movie db api 
+          //this response is accessed from the data object that has an object called results that contains objects of all horror movies
+          const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/discover/movie`, {
+            params: {
+              api_key: process.env.REACT_APP_API_KEY,
+              with_genres: '27',
+              language: 'en-Us'
+            }
+          }) 
+          //console log for debugging
+          console.log('results', results)
+          //set the empty popular on netflix array to the results grabbed from API
+          setHorrorMovies(results)  
+        }
+
 
     //function that search for a movie
     const searchMovie = async (search) =>{
@@ -92,6 +183,14 @@ useEffect(() => {
   searchMovie(search)
   //call grabPopularOnNetflixMovies method
   grabPopularOnNetflixMovies()
+  //call grabComedyMovies method
+  grabComedyMovies()
+  //call the grabRomanceMovies method
+  grabRomanceMovies()
+  //call the grabActionMovies method
+  grabActionMovies()
+  //call the grabHorrorMovies method
+  grabHorrorMovies()
 
 
 }, [])
@@ -127,6 +226,63 @@ const displayPopularOnNetflixMovies = () =>{
   ))
 }
 
+//function that displays comedyMovies
+const displayComedyMovies = () =>{
+  //mapping the comedy movies on to our empty comedyMovies array to populate it
+  return comedyMovies.map(c =>(
+    //display movie card page as element here
+    <MovieCard
+    key={c.id}
+    movie={c}
+    //to display the banner of the rendered movie
+    bannerMovie={setBannerMovie}
+    />
+  ))
+}
+
+
+//function that displays romanceMovies
+const displayRomanceMovies = () =>{
+  //mapping the comedy movies on to our empty comedyMovies array to populate it
+  return romanceMovies.map(rm =>(
+    //display movie card page as element here
+    <MovieCard
+    key={rm.id}
+    movie={rm}
+    //to display the banner of the rendered movie
+    bannerMovie={setBannerMovie}
+    />
+  ))
+}
+
+//function that displays actionMovies
+const displayActionMovies = () =>{
+  //mapping the action movies on to our empty actionMovies array to populate it
+  return actionMovies.map(am =>(
+    //display movie card page as element here
+    <MovieCard
+    key={am.id}
+    movie={am}
+    //to display the banner of the rendered movie
+    bannerMovie={setBannerMovie}
+    />
+  ))
+}
+
+//function that displays horrorMovies
+const displayHorrorMovies = () =>{
+  //mapping the horror movies on to our empty horrorMovies array to populate it
+  return horrorMovies.map(h =>(
+    //display movie card page as element here
+    <MovieCard
+    key={h.id}
+    movie={h}
+    //to display the banner of the rendered movie
+    bannerMovie={setBannerMovie}
+    />
+  ))
+}
+
 // function that displays searched items
 const displaySearchedMovies = () =>{
   //mapping the searched movie on to our empty string
@@ -150,7 +306,26 @@ const findMovieBySearch = (e)=> {
 
 }
 
+console.log(popularOnNetflixMovies)
 
+
+//function to handle clicks to display trailer
+const handleClick = (movie)=> {
+  if(trailerUrl){
+    setTrailerUrl("")
+  }
+  else{
+    movieTrailer(movie?.name || "")
+    .then(url =>{
+
+      const urlParams = new URLSearchParams (new URL(url).search)
+      setTrailerUrl (urlParams.get('v'))
+
+    })
+    .catch((error)=> console.log(error))
+  }
+
+}
 
   return (
     <div className="home">
@@ -177,24 +352,37 @@ const findMovieBySearch = (e)=> {
 
         {/* call a function that display movies  */}
         {/* but displays the search result if searchResults array is populated and has length */}
+
         <h2 className="MovieTileHeading">Recent Search</h2>
         <div className="MovieTile">{displaySearchedMovies()}</div>
-        <br />  
-        <h2 className="MovieTileHeading">Popular on Netflix</h2>
-        <div className="MovieTile">{displayPopularOnNetflixMovies()}</div>  
-        <br />  
-         <h2 className="MovieTileHeading">New Releases</h2>
-        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <br /> 
+        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}></YouTube>}
 
-        <br />  
+        <h2 className="MovieTileHeading">New Releases</h2>
+        <div className="MovieTile">{displayPopularOnNetflixMovies()}</div>  
+        <button className="MovieTile" onClick={handleClick}>Trailer</button>  
+        <br /> 
+
+        <h2 className="MovieTileHeading">Romance</h2>
+        <div className="MovieTile">{displayRomanceMovies()}</div>  
+        <br /> 
+
+        <h2 className="MovieTileHeading">Horror</h2>
+        <div className="MovieTile">{displayHorrorMovies()}</div>   
+
+         <h2 className="MovieTileHeading">Popular On Netflix</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>  
+        <br /> 
+
          <h2 className="MovieTileHeading">Comedies</h2>
-        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <div className="MovieTile">{displayComedyMovies()}</div>   
         <br />  
+
          <h2 className="MovieTileHeading">Action</h2>
-        <div className="MovieTile">{displayFeaturedMovies()}</div>   
-        <br />  
-         <h2 className="MovieTileHeading">Horror</h2>
-        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <div className="MovieTile">{displayActionMovies()}</div> 
+
+ 
+  
 
 
       </div>
