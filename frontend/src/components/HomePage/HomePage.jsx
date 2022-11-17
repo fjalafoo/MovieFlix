@@ -41,8 +41,8 @@ const Home = () => {
     console.log('results', results)
     //set the empty featured movies array to the results grabbed from API
     setMovies(results)
-    //set the displayed trailer to show the first movie from the featured movies
-    setTrailerMovie(results[0])
+    //set the displayed banner to show the first movie from the featured movies
+    setBannerMovie(results[0])
 
   }
 
@@ -164,8 +164,8 @@ const findMovieBySearch = (e)=> {
 
 
         <div className="featuredBanner" style={{backgroundImage: `url(${img_path}${bannerMovie.backdrop_path})`}}>
-        <h2 className="trailerMovieTitle">{bannerMovie.title}</h2>
-        <p className="trailerMovieOverview">{bannerMovie.overview ? <small>{bannerMovie.overview}</small> : null}</p>
+        <h2 className="bannerMovieTitle">{bannerMovie.title}</h2>
+        <p className="bannerMovieOverview">{bannerMovie.overview ? <small>{bannerMovie.overview}</small> : null}</p>
         <button className="PlayBtn">Play</button>
         <button className="InfoBtn">Info</button>
         </div>
