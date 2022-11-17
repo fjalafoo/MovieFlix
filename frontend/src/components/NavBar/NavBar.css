@@ -6,6 +6,7 @@
     top: 0;
     z-index: 999;
     background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+    
   
 }
 .scrolled{
@@ -13,7 +14,7 @@
     }
   
     .NavBarcontainer {
-      padding: 0px 80px;
+      padding: 13px 80px;
       display: flex;
       align-items:initial;
       justify-content: space-between;
@@ -29,6 +30,8 @@
         margin-left: 20px;
         display: inline-block;
         font-size: 20px;
+        text-decoration: none;
+        color:white;
     }
     .left {
         display: flex;     
@@ -42,8 +45,9 @@
         width: 300px;
         padding: 10px;
     }
-  .img{
-    height: 6vh;
-    margin-top: 10px;
+  .navBarLogo{
+    height: 20vh;
+    margin-top: 10%;
     margin-left: -70px;
+    
   }

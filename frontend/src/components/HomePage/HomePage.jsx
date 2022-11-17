@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 
 
 
+
 const Home = () => {
   //have an array that stores featured movies, for now this array is empty
   const [movies, setMovies] = useState([])
@@ -40,8 +41,8 @@ const Home = () => {
     console.log('results', results)
     //set the empty featured movies array to the results grabbed from API
     setMovies(results)
-    //set the top banner to show the first movie from the featured movies
-    setBannerMovie(results[0])
+    //set the displayed trailer to show the first movie from the featured movies
+    setTrailerMovie(results[0])
 
   }
 
@@ -150,37 +151,49 @@ const findMovieBySearch = (e)=> {
 
   return (
     <div className="home">
+      {/* <NavBar onLogoutHandler = {onLogoutHandler} isAuth={isAuth} user={user} /> */}
       <div className="featuredMoviesContainer">
         {/* search movie functionality */}
-        <h1>.</h1>
-        <h1>.</h1>
-        <h1>.</h1>
-        <h1>.</h1>
-        <h1>.</h1>
+       <br /><br /> <br />  <br />  <br />
+     
         <form onSubmit={findMovieBySearch}>
-          < input type='text' onChange={(e) => setSearch(e.target.value)}></input>
-          <button type='submit'>Search</button>
+          < input className="searchInput" type='text' onChange={(e) => setSearch(e.target.value)}></input>
+          <button className="searchBtn" type='submit'>Search</button>
         </form>
         {search}
 
 
         <div className="featuredBanner" style={{backgroundImage: `url(${img_path}${bannerMovie.backdrop_path})`}}>
-        <h2>{bannerMovie.title}</h2>
-        {bannerMovie.overview ? <small>{bannerMovie.overview}</small> : null}
+        <h2 className="trailerMovieTitle">{bannerMovie.title}</h2>
+        <p className="trailerMovieOverview">{bannerMovie.overview ? <small>{bannerMovie.overview}</small> : null}</p>
+        <button className="PlayBtn">Play</button>
+        <button className="InfoBtn">Info</button>
         </div>
+
+
+
         {/* call a function that display movies  */}
         {/* but displays the search result if searchResults array is populated and has length */}
-        {searchResults.length ? 
-        displaySearchedMovies()
-        :
-      
+        <h2 className="MovieTileHeading">Popular on Netflix</h2>
+        <div className="MovieTile">{searchResults.length ? displaySearchedMovies() : displayFeaturedMovies() }</div>
+        <br />  
+        <h2 className="MovieTileHeading">Trending now</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>  
+        <br />  
+         <h2 className="MovieTileHeading">New Releases</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+
+        <br />  
+         <h2 className="MovieTileHeading">Comedies</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <br />  
+         <h2 className="MovieTileHeading">Action</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
+        <br />  
+         <h2 className="MovieTileHeading">Horror</h2>
+        <div className="MovieTile">{displayFeaturedMovies()}</div>   
 
 
-        displayFeaturedMovies()
-        // displayPopularOnNetflixMovies()
-         }
- 
-                            
       </div>
     </div>
   );

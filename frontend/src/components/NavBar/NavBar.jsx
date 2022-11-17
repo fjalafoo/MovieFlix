@@ -26,22 +26,23 @@ const Navbar = (props) => {
       <div className="NavBarcontainer">
         <div className="left">
          
-          <img
+          <img className="navbarLogo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
           
           <div className="List">
-          <span className="items">Homepage</span>
-          <span className="items">Series</span>
-          <span className="items">Movies</span>
-          <span className="items">New and Popular</span>
-          <span className="items">My List</span>
+          <Link to={'../Home'} className="items">HomePage</Link>
+          <Link to={'../Series'} className="items">Series</Link>
+          <Link to={'../Movies'} className="items">Movies</Link>
+          <Link to={'../NewMovies'} className="items">New and Popular</Link>
+          <Link to={'../MyList'} className="items">My List</Link>
+          
           </div>
 
           <div className="auth">
      
-      <Link to="/logout" onClick={onLogoutHandler}>Sign out</Link>
+      <Link to="/logout" className="items" onClick={onLogoutHandler}>Sign out</Link>
           </div>
 
         </div>

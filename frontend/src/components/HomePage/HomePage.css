@@ -12,3 +12,62 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.trailerMovieTitle{
+    color:white;
+    padding-top: 22%;
+    padding-left: 5%;
+    font-size: 40px;
+    width:50%;
+    
+}
+
+.trailerMovieOverview {
+    color:white;
+    /* padding-top: 25%; */
+    padding-left: 10%;
+    font-size: 18px;
+    width:50%;
+    text-align: justify;
+}
+
+.PlayBtn {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 22px;
+    padding: 10px;
+    margin-right: 10px;
+    width:6%;
+    float:left;
+    margin-left: 190px;
+    margin-top: 20px;
+   
+}
+.InfoBtn {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 22px;
+    padding: 10px;
+    margin-left: 10px;
+    width:6%;
+    float:left;
+    margin-top: 20px;
+}
+
+.searchBtn {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 15px;
+    padding: 10px;
+    width:6%;
+    margin-left: 20px;
+}
+
+.searchInput {
+    color:#0b0b0b;
+    font-weight: 200;
+    font-size: 14px;
+    padding: 10px;
+ width:20%;
+    margin-left: 900px;
+}

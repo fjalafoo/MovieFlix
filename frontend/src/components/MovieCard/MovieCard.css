@@ -1,0 +1,116 @@
+/* ::-webkit-scrollbar {
+    width: 0px;
+   
+        display: none;
+      
+  }
+
+.MovieTile {
+   -webkit-overflow-scrolling: touch;
+   display:inline-flex;
+   flex-wrap:no-wrap;
+   height:240px;
+  overflow-x: scroll;
+   margin-right: 12px;
+
+   
+  
+}
+
+.poster {
+    flex-shrink: 0;
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+  margin-left: 6px;
+
+} */
+
+.MovieTile {
+    max-height: 220px;
+   
+    border:1px solid #0b0b0b;
+    display:flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: 10px;
+    
+}
+
+.MovieTile ::-webkit-scrollbar{
+    width:0;
+}
+
+.MovieTile .poster {
+    min-width: 260px;
+    height:190px;
+    line-height: 110px;
+    text-align: center;
+    background-color:solid #0b0b0b;
+    margin:26px ;
+
+    
+}
+
+.posterImage.resize {
+   object-fit: contain;
+    
+    
+}
+
+.MovieTileHeading {
+    color:white;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 2%;
+}
+
+.posterImage:hover {
+    width: 325px;
+    height: 300px;
+    position: absolute;
+    top: -50px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    border-radius: 5px;
+
+    
+}
+    
+
+.posterImage.itemInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 1px;
+  }
+     
+  .posterImage.itemInfoTop {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+        font-size: 12px;
+        font-weight: 200;
+        color: gray;
+      }
+      .posterImage.limit {
+          border: 1px solid gray;
+          padding: 1px 3px;
+          margin: 0 5px;
+        }
+      
+
+        .posterImage.desc {
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+
+      .posterImage.genre {
+        font-size: 14px;
+        color: lightgray;
+      }
+   
+      .addBtn{
+        font-size: 20px;
+        font-weight: 900;
+        padding: 13px;
+      }
