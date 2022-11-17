@@ -7,13 +7,13 @@
     
 }
 
-.featuredTrailer {
+.featuredBanner {
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.trailerMovieTitle{
+.bannerMovieTitle{
     color:white;
     padding-top: 22%;
     padding-left: 5%;
@@ -22,7 +22,7 @@
     
 }
 
-.trailerMovieOverview {
+.bannerMovieOverview {
     color:white;
     /* padding-top: 25%; */
     padding-left: 10%;
