@@ -1,7 +1,7 @@
 import React from 'react'
 import './SignUp.css'
 import {useState} from 'react'
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -47,15 +47,15 @@ function SignUp(props) {
 
 
       {/* header section starts here */}
-      <div className='header'>
+      {/* <div className='header'> */}
         {/* NETFLIX logo on the left*/}
-          <img alt=""
+          {/* <img alt=""
           className='NetflixLogo' 
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1597px-Netflix_2015_logo.svg.png?20190206123158'>
-          </img>
+          </img> */}
         {/* signin button on the right */}
-        <button className='signInButton'>Sign In</button>
-      </div>
+        {/* <button className='signInButton'>Sign In</button> */}
+      {/* </div> */}
       {/* header section ends here */}
 
 

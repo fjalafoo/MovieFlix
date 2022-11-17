@@ -52,7 +52,7 @@ const Home = () => {
       //data const returns an array of popular on netflix movies from the movie db api 
       //this response is accessed from the data object that has an object called results that contains objects of all popular movies
       const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/trending/all/week`, {
-        params: {
+        params: { 
           api_key: process.env.REACT_APP_API_KEY,
           language: 'en-Us'
         }
@@ -118,7 +118,7 @@ const displayPopularOnNetflixMovies = () =>{
     //display movie card page as element here
     <MovieCard
     key={p.id}
-    p={p}
+    movie={p}
     //to display the banner of the rendered movie
     bannerMovie={setBannerMovie}
     />
@@ -174,11 +174,11 @@ const findMovieBySearch = (e)=> {
 
         {/* call a function that display movies  */}
         {/* but displays the search result if searchResults array is populated and has length */}
-        <h2 className="MovieTileHeading">Popular on Netflix</h2>
-        <div className="MovieTile">{searchResults.length ? displaySearchedMovies() : displayFeaturedMovies() }</div>
+        <h2 className="MovieTileHeading">Recent Search</h2>
+        <div className="MovieTile">{displaySearchedMovies()}</div>
         <br />  
-        <h2 className="MovieTileHeading">Trending now</h2>
-        <div className="MovieTile">{displayFeaturedMovies()}</div>  
+        <h2 className="MovieTileHeading">Popular on Netflix</h2>
+        <div className="MovieTile">{displayPopularOnNetflixMovies()}</div>  
         <br />  
          <h2 className="MovieTileHeading">New Releases</h2>
         <div className="MovieTile">{displayFeaturedMovies()}</div>   

@@ -15,8 +15,8 @@ function MovieCard({movie}) {
 
   
   return (
-    
-      <div className="poster" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> 
+    <>
+    <div className="poster" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}> 
       {movie.poster_path ? <img className='posterImage' src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}alt=""/>
           :null
         }
@@ -43,6 +43,8 @@ function MovieCard({movie}) {
 
 
        </div> 
+    </>
+      
       // {/* <h3>{movie.title}</h3> */}
       // {/* {movie.overview} */}
   

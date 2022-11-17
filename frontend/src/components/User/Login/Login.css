@@ -15,6 +15,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    padding-top: 15%;
 }
 
 .header {
@@ -30,6 +31,9 @@
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
+    padding-top:5%;
+    border-radius: 2%;
+  
 }
 
 h1{
@@ -63,7 +67,11 @@ h1{
     flex-direction: column;
     width: 300px;
     height: 30px;
-    align-items: center;
+    align-items:center;
+    padding:2%;
+   
+    
+   
 
   }
 
@@ -73,4 +81,12 @@ span {
     flex-direction: column;
     margin: 0 auto;
     color: lightgray;
+  }
+
+
+
+  .formItems {
+    padding: 3%;
+    margin: 1.5%;
+    font-size: 13px;
   }
