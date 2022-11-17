@@ -1,9 +1,9 @@
 import './MovieCard.css'
 import React from 'react'
 
-function MovieCard({movie}) {
+function MovieCard({movie, bannerMovie}) {
   return (
-    <div>
+    <div onClick={()=> bannerMovie(movie)}>
       {movie.poster_path ? <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}alt=""/>
         :null
       }

@@ -2,6 +2,7 @@ import NavBar from "../NavBar/NavBar";
 import "./HomePage.css";
 import axios from 'axios'
 import MovieCard from "../MovieCard/MovieCard";
+import YouTube from "react-youtube";
 
 
 import jwt_decode from 'jwt-decode';
@@ -17,9 +18,11 @@ const Home = () => {
   // have a string that stores the searched movie, for now that string is empty
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
-  // have an object that stores the selected movie to play its trailer, for now that object is empty
-  const [trailerMovie, setTrailerMovie] = useState({})
+  // have an object that stores the selected movie to display its in the banner, for now that object is empty
+  const [bannerMovie, setBannerMovie] = useState({})
   const img_path = "https://image.tmdb.org/t/p/w1280"
+   //have an array that stores popular on netflix movies, for now this array is empty
+   const [popularOnNetflixMovies, setPopularOnNetflixMovies] = useState([])
 
 
 
@@ -37,10 +40,27 @@ const Home = () => {
     console.log('results', results)
     //set the empty featured movies array to the results grabbed from API
     setMovies(results)
-    //set the displayed trailer to show the first movie from the featured movies
-    setTrailerMovie(results[0])
+    //set the top banner to show the first movie from the featured movies
+    setBannerMovie(results[0])
 
   }
+
+
+    //function that popular on Netfix movies from API
+    const grabPopularOnNetflixMovies = async () =>{
+      //data const returns an array of popular on netflix movies from the movie db api 
+      //this response is accessed from the data object that has an object called results that contains objects of all popular movies
+      const {data : {results}}  = await axios.get(`${process.env.REACT_APP_TMBD_BASE_URL}/trending/all/week`, {
+        params: {
+          api_key: process.env.REACT_APP_API_KEY,
+          language: 'en-Us'
+        }
+      }) 
+      //console log for debugging
+      console.log('results', results)
+      //set the empty popular on netflix array to the results grabbed from API
+      setPopularOnNetflixMovies(results)  
+    }
 
     //function that search for a movie
     const searchMovie = async (search) =>{
@@ -69,6 +89,8 @@ useEffect(() => {
   grabMovies()
     //call searchMovie method, pass the movie to be searched
   searchMovie(search)
+  //call grabPopularOnNetflixMovies method
+  grabPopularOnNetflixMovies()
 
 
 }, [])
@@ -81,8 +103,23 @@ const displayFeaturedMovies = () =>{
     <MovieCard
     key={movie.id}
     movie={movie}
-    //to play the trailer of the rendered movie
-    trailerMovie={setTrailerMovie}
+    //to display the banner of the rendered movie
+    bannerMovie={setBannerMovie}
+    />
+  ))
+}
+
+
+//function that displays popularOnNetflixMovies
+const displayPopularOnNetflixMovies = () =>{
+  //mapping the popular movies on to our empty popularOnNetflixMovies array to populate it
+  return popularOnNetflixMovies.map(p =>(
+    //display movie card page as element here
+    <MovieCard
+    key={p.id}
+    p={p}
+    //to display the banner of the rendered movie
+    bannerMovie={setBannerMovie}
     />
   ))
 }
@@ -110,6 +147,7 @@ const findMovieBySearch = (e)=> {
 }
 
 
+
   return (
     <div className="home">
       <div className="featuredMoviesContainer">
@@ -126,16 +164,22 @@ const findMovieBySearch = (e)=> {
         {search}
 
 
-        <div className="featuredTrailer" style={{backgroundImage: `url(${img_path}${trailerMovie.backdrop_path})`}}>
-        <h2>{trailerMovie.title}</h2>
-        {trailerMovie.overview ? <small>{trailerMovie.overview}</small> : null}
+        <div className="featuredBanner" style={{backgroundImage: `url(${img_path}${bannerMovie.backdrop_path})`}}>
+        <h2>{bannerMovie.title}</h2>
+        {bannerMovie.overview ? <small>{bannerMovie.overview}</small> : null}
         </div>
-
-
-
         {/* call a function that display movies  */}
         {/* but displays the search result if searchResults array is populated and has length */}
-        {searchResults.length ? displaySearchedMovies() : displayFeaturedMovies() }
+        {searchResults.length ? 
+        displaySearchedMovies()
+        :
+      
+
+
+        displayFeaturedMovies()
+        // displayPopularOnNetflixMovies()
+         }
+ 
                             
       </div>
     </div>
