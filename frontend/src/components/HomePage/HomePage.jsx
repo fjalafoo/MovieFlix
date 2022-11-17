@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 
 
 
-const Home = () => {
+const Home = (props) => {
   //have an array that stores featured movies, for now this array is empty
   const [movies, setMovies] = useState([])
   // have a string that stores the searched movie, for now that string is empty
@@ -102,6 +102,7 @@ const displayFeaturedMovies = () =>{
   return movies.map(movie =>(
     //display movie card page as element here
     <MovieCard
+    setImg={props.setImg}
     key={movie.id}
     movie={movie}
     //to display the banner of the rendered movie
@@ -117,6 +118,7 @@ const displayPopularOnNetflixMovies = () =>{
   return popularOnNetflixMovies.map(p =>(
     //display movie card page as element here
     <MovieCard
+    setImg={props.setImg}
     key={p.id}
     movie={p}
     //to display the banner of the rendered movie
@@ -131,6 +133,7 @@ const displaySearchedMovies = () =>{
   return searchResults.map(s =>(
     //display movie card page as element here
     <MovieCard
+    setImg={props.setImg}
     key={s.id}
     movie={s}
     />

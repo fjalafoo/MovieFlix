@@ -1,8 +1,9 @@
 import './MovieCard.css'
 import React from 'react'
 import {useState} from 'react';
+import axios from 'axios';
 
-function MovieCard({movie}) {
+function MovieCard({movie, setImg}) {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
@@ -12,6 +13,11 @@ function MovieCard({movie}) {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
+
+
+  const updateImg = () => {
+    setImg(movie)
+  }
 
   
   return (
@@ -25,7 +31,7 @@ function MovieCard({movie}) {
         
 
          <div className="itemInfoTop">
-          <button className='addBtn'>+</button>
+          <button className='addBtn' onClick={updateImg}>+</button>
               <span>1 hour 14 mins</span>
               <span className="limit">+16</span>
               <span>1999</span>
