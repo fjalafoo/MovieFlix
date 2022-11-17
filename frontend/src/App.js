@@ -8,12 +8,14 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
+import MyList from './components/MyList/MyList';
 
 
 function App() {
 
   const [isAuth, setIsAuth] = useState(false)
   const [user, setUser] = useState({})
+  const [img, setImg] = useState({})
 
   useEffect(() => {
 
@@ -76,6 +78,8 @@ function App() {
   }
 
 
+
+
   console.log(isAuth)
 
 
@@ -85,10 +89,11 @@ function App() {
       <Router>
     <Navbar onLogoutHandler = {onLogoutHandler} setIsAuth={setIsAuth} isAuth={isAuth} user={user} />
      <Routes>
-     <Route path='/home' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
+     <Route path='/home' element={isAuth ? <HomePage setImg={setImg} /> : <Login login={loginHandler}/>} />
      <Route path='/signup' element={<SignUp register={registerHandler}></SignUp>} />
-     <Route path='/login' element={isAuth ? <HomePage /> : <Login login={loginHandler}/>} />
+     <Route path='/login' element={isAuth ? <HomePage setImg={setImg} /> : <Login login={loginHandler}/>} />
      <Route path='/' element={<SignUp register={(e) => registerHandler(e)} />} />
+     <Route path='/MyList' element={<MyList img={img} /> }/>
      </Routes>
     </Router>
     </div>
